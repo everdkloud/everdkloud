@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Launch Cluster Storage</title><link rel="stylesheet" href="/launch-portal.css"></head>
+<body>
+<div class="sky"></div>
+<main class="wrap">
+<header><div><h1>Cluster Storage</h1><p>HotPocket-authenticated, integrity-verified distributed files. Connects directly to validator user ports.</p></div><nav><a href="/evernode">Admin / AI</a></nav></header>
+<section id="login" class="card"><h2>Connect with your HotPocket identity</h2><p>Use the same 12-word recovery phrase or backup file created in the launch wizard. The phrase restores the exact same HotPocket key locally in this browser.</p><div id="keyState" class="notice">No key loaded.</div><div id="mnemonicBox" class="mnemonic-box" hidden><small>12-WORD RECOVERY PHRASE — KEEP PRIVATE</small><div id="mnemonicWords" class="mnemonic-words"></div><button id="copyMnemonic" type="button">Copy phrase</button></div><div class="actions"><button id="generate" class="primary">Generate 12 words + key</button><button id="download">Download backup</button><label class="button file">Import backup<input id="importKey" type="file" accept=".json,.txt,.key"></label><button id="connect" class="primary">Connect</button></div><div class="seed-restore"><label for="seedPhrase">Restore from 12 words</label><textarea id="seedPhrase" rows="3" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="word1 word2 … word12"></textarea><button id="restoreMnemonic" type="button">Restore identity</button></div><div id="connectStatus" class="status" aria-live="polite">Ready to connect.</div></section>
+<section id="app" hidden>
+<div id="appStatus" class="notice" aria-live="polite">Connected. Loading cluster state…</div>
+<div class="grid stats"><div class="card"><span>Connected key</span><b id="pubkey">—</b></div><div class="card"><span>Managed instances</span><b id="nodeCount">0</b></div><div class="card"><span>My / public files</span><b id="fileCount">0</b></div></div>
+<div class="grid two">
+<section class="card"><h2>Upload</h2><div class="field"><label>File</label><input id="file" type="file"></div><div class="row"><div class="field"><label>Visibility</label><select id="visibility"><option value="private">Private</option><option value="public">Public</option></select></div><div class="field"><label>Replication</label><select id="replicas"></select></div></div><label class="ai-tag-toggle"><input id="aiTagging" type="checkbox" checked><span><b>AI tag this public file</b><small>AI-enabled validators receive work over HotPocket Node Party Line, independently suggest tags, vote, and commit the winning 5 tags over time.</small></span></label><div class="notice">Private files are encrypted before leaving your browser and are never sent to AI. Public uploads can enter the decentralized AI tagging queue after their integrity manifest is committed.</div><button id="upload" class="primary">Upload file</button><div id="uploadStatus" class="status" aria-live="polite"></div><div id="uploadMeter" class="meter" hidden><div id="uploadMeterFill"></div></div></section>
+<section class="card"><h2>Instance browser</h2><div class="field"><label>Managed instance</label><select id="instance"></select></div><button id="browse">Refresh inventory</button><div id="inventory" class="list muted">Choose an instance.</div></section>
+</div>
+<section class="card"><div class="titlebar"><div><h2>Files</h2><p>Downloads are accepted only when every chunk and final payload match the consensus manifest.</p></div><button id="refresh">Refresh</button></div><div id="files" class="files"></div></section>
+</section>
+</main>
+<script src="/hotpocket-js-client.min.js"></script><script src="/sodium.js"></script><script src="/launch-mnemonic.js"></script><script src="/launch-portal.js?v=0.7.16-tagger-fix1"></script>
+</body></html>
